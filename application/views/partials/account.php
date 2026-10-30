@@ -7,7 +7,7 @@ $is_admin = $current_user['role'] === 'admin';
 <a class="skip-link" href="#page-content">انتقل إلى المحتوى</a>
 <aside class="sidebar" aria-label="القائمة الرئيسية">
     <a class="brand company-brand" href="<?= html_escape(site_url('products')) ?>" aria-label="SMART LIFE — المنتجات"><span class="brand-logo"><img src="<?= html_escape(base_url('assets/images/smart-life-logo.png')) ?>" alt="SMART LIFE" width="1024" height="557"></span><small>إدارة المخزون والمبيعات</small></a>
-    <span class="nav-label">مساحة العمل</span>
+    <!-- <span class="nav-label">مساحة العمل</span> -->
     <nav class="main-nav">
         <?php foreach ($sections as $path => $label): ?>
             <a href="<?= html_escape(site_url($path)) ?>" <?= $section === $path ? 'class="selected" aria-current="page"' : '' ?>>
@@ -23,7 +23,7 @@ $is_admin = $current_user['role'] === 'admin';
             <a href="<?= html_escape(site_url('stock/manage')) ?>">＋ تحديد كمية منتج</a>
         <?php endif; ?>
     </nav>
-    <div class="sidebar-note"><strong>خطوات العمل</strong><span>أضف المنتج، حدّد مخزونه، ثم ابدأ البيع.</span></div>
+    <!-- <div class="sidebar-note"><strong>خطوات العمل</strong><span>أضف المنتج، حدّد مخزونه، ثم ابدأ البيع.</span></div> -->
 </aside>
 <div class="workspace-topbar">
     <span class="section-name"><?= html_escape(isset($sections[$section]) ? $sections[$section] : 'مساحة العمل') ?></span>
