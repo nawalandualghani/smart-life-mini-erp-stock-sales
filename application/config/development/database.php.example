@@ -1,0 +1,11 @@
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+require dirname(__DIR__) . '/database.php';
+
+// Copy to database.php. Set local values here or use these environment variables.
+$db['default']['hostname'] = getenv('APP_DB_HOST') ?: '127.0.0.1';
+$db['default']['port'] = getenv('APP_DB_PORT') ?: 3306;
+$db['default']['username'] = getenv('APP_DB_USER') ?: 'root';
+$db['default']['password'] = getenv('APP_DB_PASSWORD') !== FALSE ? getenv('APP_DB_PASSWORD') : '';
+$db['default']['database'] = getenv('APP_DB_NAME') ?: 'smart_life_test';

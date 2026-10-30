@@ -1,0 +1,22 @@
+.print-only{display:none}
+@page{size:A4;margin:14mm}
+@media print{
+    html,body{background:#fff!important;color:#000!important;font:11pt/1.6 Tahoma,Arial,sans-serif}
+    .sidebar,.workspace-topbar,.skip-link,.nav,.no-print,.app-popup{display:none!important}
+    .invoice-document main{margin:0!important;padding:0!important;max-width:none!important;min-height:0}
+    .print-only{display:block}
+    .print-brand{display:flex;justify-content:space-between;border-bottom:2px solid #222;padding:8px 0;margin:14px 0;font-size:12pt}
+    .print-brand .brand-logo{width:180px;height:48px;border-radius:0;print-color-adjust:exact;-webkit-print-color-adjust:exact}
+    h1{font-size:20pt;margin:0 0 8mm}
+    .card{border:0;border-radius:0;box-shadow:none;padding:0;margin:7mm 0;overflow:visible}
+    .fields{display:flex;gap:10mm;break-inside:avoid}
+    .fields>div{min-width:0;flex:1}
+    .table-wrap{overflow:visible!important;max-width:none}
+    table{width:100%;min-width:0!important;table-layout:fixed;white-space:normal;font-size:10pt}
+    th,td{border:1px solid #aaa;padding:7px;white-space:normal;overflow-wrap:anywhere;color:#000}
+    th{background:#eee!important;print-color-adjust:exact;-webkit-print-color-adjust:exact}
+    thead{display:table-header-group}tr{break-inside:avoid;page-break-inside:avoid}
+    .totals{max-width:85mm;break-inside:avoid;page-break-inside:avoid;margin-inline-start:auto}
+    .totals p{display:flex;justify-content:space-between}
+    a{color:#000;text-decoration:none}
+}

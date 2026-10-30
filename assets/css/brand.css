@@ -1,0 +1,64 @@
+/* SMART LIFE: original logo, sky blue ribbon and warm gold accent. */
+:root{--primary:#236f9a;--ink:#19324b;--muted:#5a7085;--line:#dce6ee;--canvas:#f4f8fc;--brand-sky:#70c2e3;--brand-gold:#d7aa43}
+button:hover,.button:hover{background:#185579}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline-color:#389bc7}
+.sidebar{background:linear-gradient(165deg,#18394f,#102438);border-inline-start:3px solid var(--brand-gold)}
+.brand.company-brand{display:flex;flex-direction:column;align-items:stretch;gap:9px;margin-bottom:30px}
+.brand-logo{display:block;position:relative;width:100%;height:62px;overflow:hidden;background:#fff;border-radius:10px;flex-shrink:0}
+.brand-logo img{position:absolute;width:110%;height:auto;max-width:none;left:-5%;top:50%;transform:translateY(-50%)}
+.company-brand>small{display:block;text-align:center;color:#b4cadb;font-size:12px;font-weight:400}
+.main-nav a.selected{background:#254e6a;border-color:#497c9b;box-shadow:inset -3px 0 var(--brand-gold)}
+.main-nav a,.quick-nav a{color:#c9d9e7}
+.nav-label{color:#9bb5cd}.sidebar-note{border-color:#365269}.sidebar-note strong{color:#f0d99e}
+.workflow{background:#edf5fc;border-color:#d4e5f2}.workflow strong{color:#244b6b}
+.step-number{background:#fff4d9;color:#7b5917}.avatar{background:#e7f2fa;color:#286d96}
+.current-page{background:var(--primary)}.row-actions a:hover{background:#eaf4fb}
+.auth-page{background:radial-gradient(ellipse at top right,#d9edf9,transparent 60%),radial-gradient(ellipse at bottom left,#f5e9c7,transparent 65%),#f4f8fc}
+.auth-page main{border-top:4px solid var(--brand-gold);box-shadow:0 18px 60px #19324b0d}
+.auth-page .brand.company-brand{margin-bottom:28px}.auth-page .brand-logo{height:94px}
+.auth-page .company-brand>small{color:var(--muted)}
+.app-popup[data-kind=confirm] .popup-symbol{background:#fff3d7;color:#8a651f}
+@media(max-width:720px){.brand.company-brand{flex-direction:row;align-items:center;justify-content:space-between;margin-bottom:16px;gap:16px}.company-brand .brand-logo{width:180px;height:47px}.company-brand>small{font-size:11px}.auth-page .brand.company-brand{flex-direction:column}.auth-page .brand-logo{width:100%;height:80px}}
+
+/* Full interface palette: blue actions, sky surfaces, gold emphasis. */
+:root{--primary:#246c95;--brand-blue:#246c95;--brand-sky:#70c2e3;--brand-gold:#d9aa42;--brand-blue-soft:#edf7fc;--brand-gold-soft:#fff7e5;--canvas:#f5f9fc;--line:#d7e7f0}
+.sidebar{background:linear-gradient(180deg,#f2faff 0%,#e4f2fa 100%);border-inline-start:3px solid var(--brand-gold);border-inline-end:1px solid #c8dfed;color:#234a63}
+.company-brand>small{color:#526f83}
+.nav-label{color:#536d82}
+.main-nav a,.quick-nav a{color:#295572}
+.main-nav a:hover,.quick-nav a:hover{background:#dceef8;color:#194c70}
+.main-nav a.selected{background:#d1eaf8;color:#194c70;border-color:#acd4eb;box-shadow:inset -4px 0 var(--brand-gold);font-weight:700}
+.main-nav .nav-icon{color:#307fa8}
+.sidebar-note{background:#ffffffa6;border-color:#c8dfed;color:#526f83}
+.sidebar-note strong{color:#7d5a16}
+.workspace-topbar{border-bottom:2px solid #d6eaf5;background:linear-gradient(90deg,#fff,#f5fbff)}
+h1{color:#204f70}
+h1::after{content:'';display:block;width:48px;height:4px;border-radius:4px;margin-top:10px;background:var(--brand-gold)}
+button:not(.secondary):not(.danger):not(.logout-button):not(.password-toggle),.button{background:linear-gradient(135deg,#327fa9,#24658d);border-color:#24658d;color:white;box-shadow:0 3px 8px #246c9514}
+button:not(.secondary):not(.danger):not(.logout-button):not(.password-toggle):hover,.button:hover{background:#1c577e;border-color:#1c577e}
+.reset,.secondary,.pagination a{background:#f4faff;color:#245d80;border-color:#bad9eb}
+.reset:hover,.secondary:hover,.pagination a:hover{background:#dfEFF9;color:#174d71}
+.filters{background:linear-gradient(110deg,#fff,#f2f9fd);border-color:#cde3f0;border-top:3px solid #78c4e3}
+input:not([type=hidden]):not([type=checkbox]),select{border-color:#b5d2e3}
+input:not([type=hidden]):not([type=checkbox]):focus,select:focus{border-color:#3e96c2;background:#fbfdff;box-shadow:0 0 0 3px #70c2e321}
+.card{border-color:#d5e5ee;box-shadow:0 3px 12px #246c9506}
+th{background:#e7f3fb;color:#275f81;border-bottom:2px solid #e3bf6e}
+tbody tr:hover{background:#f1f9fd}
+.code{color:#286284;background:#edf7fc;border-color:#d2e7f3}
+.summary{color:#365e77}
+.row-actions a,.row-actions button.secondary{color:#25688f;border-color:#c1deef;background:#f5fbff}
+.row-actions a:hover{background:#deeff9}
+.workflow{background:linear-gradient(100deg,#eef7fc,#fff9eb);border-color:#d9e7e9;border-inline-start:3px solid var(--brand-gold)}
+.step-number{border:1px solid #ecd49c;background:var(--brand-gold-soft);color:#785715}
+.current-page{background:var(--brand-blue);box-shadow:inset 0 -3px var(--brand-gold)}
+.low{background:#fff3d4;color:#795415;border:1px solid #ebd295}
+.totals{border-top:3px solid var(--brand-gold);background:linear-gradient(145deg,#fff,#f3faff)}
+.totals strong{color:#205e86}
+.form-actions{border-top:2px solid #dfbf71}
+.results li:hover{background:#eff8fd;border-color:#b4d7eb}
+.avatar{background:#e0f0fa;color:#266b93;border:1px solid #c5e1f1}
+.app-popup::backdrop{background:#193f615e}
+.auth-page .password-toggle{color:#347fa5}
+.auth-page .password-toggle:hover{background:#e6f3fa}
+.auth-page h1::after{width:40px}
+@media print{h1::after{display:none}.totals{background:white!important;border-top-color:#222}}
