@@ -1,71 +1,120 @@
-###################
-What is CodeIgniter
-###################
+============================
+نظام إدارة المخزون والمبيعات
+============================
 
-CodeIgniter is an Application Development Framework - a toolkit - for people
-who build web sites using PHP. Its goal is to enable you to develop projects
-much faster than you could if you were writing code from scratch, by providing
-a rich set of libraries for commonly needed tasks, as well as a simple
-interface and logical structure to access these libraries. CodeIgniter lets
-you creatively focus on your project by minimizing the amount of code needed
-for a given task.
+تطبيق ويب عربي مبني على CodeIgniter 3 لإدارة المنتجات والمخزون وفواتير البيع.
+الواجهة من اليمين إلى اليسار، ويعتمد التطبيق على PHP وقاعدة بيانات MySQL أو
+MariaDB.
 
-*******************
-Release Information
-*******************
+الوظائف الحالية
+===============
 
-This repo contains in-development code for future releases. To download the
-latest stable release please visit the `CodeIgniter Downloads
-<https://codeigniter.com/download>`_ page.
+* تسجيل الدخول والخروج بحسابات ذات أدوار مدير أو مستخدم مستودع.
+* إدارة المنتجات وتصنيفاتها؛ إنشاء المنتجات وتعديلها وتفعيلها أو تعطيلها متاح
+  للمدير.
+* عرض المخزون حسب المنتج والمستودع والبحث فيه، وتحديث الكمية وحد التنبيه.
+* عرض المخزون المنخفض وتصديره إلى CSV.
+* إنشاء فواتير البيع وعرض تفاصيلها، مع خصم اختياري وتحديث كمية المخزون.
+* تصدير قائمة الفواتير أو فاتورة واحدة إلى CSV.
+* تقييد مستخدم المستودع بمستودعه؛ أما المدير فيستطيع إدارة المنتجات والوصول
+  إلى جميع المستودعات.
 
-**************************
-Changelog and New Features
-**************************
+المتطلبات
+=========
 
-You can find a list of all changes for each release in the `user
-guide change log <https://github.com/bcit-ci/CodeIgniter/blob/develop/user_guide_src/source/changelog.rst>`_.
+* PHP 7.4 أو أحدث، مع إضافات PHP اللازمة لتشغيل CodeIgniter والتعامل مع قاعدة
+  البيانات. يستخدم التطبيق ``random_bytes`` و``password_hash`` لإنشاء الرموز
+  وكلمات المرور بأمان.
+* MySQL أو MariaDB، مع قاعدة البيانات وجداول التطبيق.
+* إعدادات الاتصال الصحيحة في ملف بيئة التطوير الموضح أدناه.
+* خادم ويب مثل Apache أو Nginx، أو خادم PHP المدمج للتطوير. يجب أن يكون مجلد
+  PHP المؤقت قابلاً للكتابة لحفظ جلسات المستخدمين.
+* متصفح حديث مع تفعيل JavaScript؛ يلزم دعم ``BigInt`` لواجهة إنشاء الفواتير.
+* لا يلزم تثبيت Composer لتشغيل النسخة الحالية؛ إطار CodeIgniter موجود ضمن
+  المشروع.
 
-*******************
-Server Requirements
-*******************
+إعداد قاعدة البيانات
+====================
 
-PHP version 5.6 or newer is recommended.
+عند التشغيل ببيئة التطوير، يقرأ CodeIgniter إعداد الاتصال من
+``application/config/development/database.php``. إذا لم يكن الملف موجوداً،
+انسخ ``application/config/development/database.php.example`` إليه ثم اضبط
+المضيف والمنفذ واسم المستخدم وكلمة المرور واسم قاعدة البيانات. لا تستبدل ملف
+إعداد محلي موجود. يرث الملف إعدادات الترميز وبقية الخيارات من
+``application/config/database.php``.
 
-It should work on 5.3.7 as well, but we strongly advise you NOT to run
-such old versions of PHP, because of potential security and performance
-issues, as well as missing features.
+يتضمن المشروع ملف ``smart_life_test.sql`` لإنشاء الجداول وإضافة بيانات تجريبية.
+استورده إلى قاعدة جديدة أو فارغة فقط، لأنه يعيد إنشاء الجداول الموجودة. الجداول
+التي يستخدمها التطبيق هي ``users`` و``categories`` و``warehouses`` و``products``
+و``warehouse_stock`` و``customers`` و``invoices`` و``invoice_items``.
 
-************
-Installation
-************
+إنشاء مستخدم
+============
 
-Please see the `installation section <https://codeigniter.com/userguide3/installation/index.html>`_
-of the CodeIgniter User Guide.
+بعد إعداد قاعدة البيانات والجداول، أنشئ حساب مدير باسم غير مستخدم:
 
-*******
-License
-*******
+.. code-block:: console
 
-Please see the `license
-agreement <https://github.com/bcit-ci/CodeIgniter/blob/develop/user_guide_src/source/license.rst>`_.
+   php tools/create_user.php manager_new admin
 
-*********
-Resources
-*********
+ولإنشاء مستخدم مرتبط بمستودع، مرّر معرّف المستودع:
 
--  `User Guide <https://codeigniter.com/docs>`_
--  `Contributing Guide <https://github.com/bcit-ci/CodeIgniter/blob/develop/contributing.md>`_
--  `Language File Translations <https://github.com/bcit-ci/codeigniter3-translations>`_
--  `Community Forums <http://forum.codeigniter.com/>`_
--  `Community Wiki <https://github.com/bcit-ci/CodeIgniter/wiki>`_
--  `Community Slack Channel <https://codeigniterchat.slack.com>`_
+.. code-block:: console
 
-Report security issues to our `Security Panel <mailto:security@codeigniter.com>`_
-or via our `page on HackerOne <https://hackerone.com/codeigniter>`_, thank you.
+   php tools/create_user.php warehouse_new warehouse_user 1
 
-***************
-Acknowledgement
-***************
+يولّد الأمر كلمة مرور عشوائية ويعرضها مرة واحدة في الطرفية؛ احفظها لاستخدامها
+في تسجيل الدخول. لا يستبدل الأمر حساباً موجوداً. يجب أن يكون المستودع المحدد
+موجوداً مسبقاً. ملف SQL يحتوي حسابي ``admin`` و``warehouse1``؛ لذلك استخدم
+اسمَي مستخدم مختلفين إذا استوردت الملف، فالأداة لا تستبدل حساباً موجوداً.
 
-The CodeIgniter team would like to thank EllisLab, all the
-contributors to the CodeIgniter project and you, the CodeIgniter user.
+التحقق من اتصال قاعدة البيانات
+==============================
+
+من مجلد المشروع افحص الاتصال:
+
+.. code-block:: console
+
+   php tools/check_database.php
+
+تعرض الأداة اسم قاعدة البيانات وترميز الاتصال وعدداً من سجلات الجداول الأساسية.
+
+تشغيل التطبيق محلياً
+===================
+
+لتشغيل خادم PHP المدمج لأغراض التطوير:
+
+.. code-block:: console
+
+   php -S 127.0.0.1:8001 -t .
+
+ثم افتح صفحة الدخول:
+
+``http://127.0.0.1:8001/index.php/auth/login``
+
+المسارات
+========
+
+* ``/index.php/auth/login``: تسجيل الدخول.
+* ``/index.php/products``: قائمة المنتجات، وهي المسار الافتراضي بعد الدخول.
+* ``/index.php/stock``: عرض المخزون.
+* ``/index.php/stock/manage``: تعديل كمية المخزون وحد التنبيه.
+* ``/index.php/invoices``: قائمة الفواتير.
+* ``/index.php/invoices/create``: إنشاء فاتورة.
+
+تتطلب صفحات المنتجات والمخزون والفواتير تسجيل الدخول. تُفرض صلاحيات المدير
+ومستخدم المستودع داخل التطبيق.
+
+ملفات المشروع
+=============
+
+* ``application/controllers``: وحدات الدخول والمنتجات والمخزون والفواتير.
+* ``application/models``: منطق التعامل مع المستخدمين والمنتجات والمخزون والفواتير.
+* ``application/views``: صفحات الواجهة العربية.
+* ``assets``: ملفات CSS وJavaScript والصورة التعريفية.
+* ``tools/create_user.php``: إنشاء حساب من سطر الأوامر.
+* ``tools/check_database.php``: فحص الاتصال والجداول الأساسية.
+* ``system``: إطار CodeIgniter المضمّن.
+
+لا يحتاج تشغيل التطبيق إلى تنزيل CodeIgniter أو تشغيل Composer؛ ملفات الإطار
+موجودة في مجلد ``system``.
