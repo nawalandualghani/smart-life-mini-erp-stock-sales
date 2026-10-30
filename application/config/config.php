@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = getenv('APP_BASE_URL') ?: 'http://127.0.0.1:8001/';
+$config['base_url'] = getenv('APP_BASE_URL') ?: 'http://127.0.0.1:8000/';
 
 /*
 |--------------------------------------------------------------------------
