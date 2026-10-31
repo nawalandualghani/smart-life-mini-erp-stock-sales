@@ -86,11 +86,11 @@ MariaDB.
 
 .. code-block:: console
 
-   php -S 127.0.0.1:8001 -t .
+   php -S 127.0.0.1:8000 -t .
 
 ثم افتح صفحة الدخول:
 
-``http://127.0.0.1:8001/index.php/auth/login``
+``http://127.0.0.1:8000/index.php/auth/login``
 
 المسارات
 ========
