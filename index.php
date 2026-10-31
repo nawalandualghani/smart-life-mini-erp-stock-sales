@@ -66,7 +66,9 @@
 switch (ENVIRONMENT)
 {
 	case 'development':
-		error_reporting(-1);
+		// CodeIgniter 3.1.13 relies on dynamic properties that PHP 8.2+ deprecates.
+		// Keep development errors visible while suppressing this framework-level notice.
+		error_reporting(PHP_VERSION_ID >= 80200 ? (E_ALL & ~E_DEPRECATED) : -1);
 		ini_set('display_errors', 1);
 	break;
 
